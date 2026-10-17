@@ -8,7 +8,7 @@
 - 运行面：S0 单次/本地
   - 部署单元与常驻进程：无；Markdown 与 agent skill，没有运行时进程。
 - 数据面：D1 需备份
-  - 存储、备份与恢复：Git 仓库；origin 为 Forgejo canonical，mirror 为 GitHub；main 跟踪 origin/main，两端 ref 已核对一致。
+  - 存储、备份与恢复：Git 仓库；origin 为 Forgejo canonical，mirror 为 GitHub push-only；main 跟踪 origin/main，两端 ref 已核对一致。
 - 协作面：C0 个人
   - 维护者与审查方式：单一维护者；变更通过提交审查，规范本身按版本收尾流程复核。
 - 交付形态：本地 skill / 文档仓库；无构建产物、无部署、无 CI。
