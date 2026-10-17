@@ -25,10 +25,11 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 
 1. 写定位卡，不先选工具。
 2. 从最小基线开始：一个仓库、一个可部署进程、SQLite 或本地文件、一条 CI；只有真实消费者才升级。
-3. 对每个高成本组件写清 **消费者 / 触发信号 / 退出或降级条件**；见 references/component-triggers.md。
-4. 分开记录本地检查、CI、部署和真实环境验收；一层通过不能替代另一层。
-5. 版本收尾时复核定位卡、组件清单和数据恢复路径；删除没有消费者的组件。
-6. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
+3. 按项目状态选择最低基线；见 references/project-baseline.md。状态只决定必须做什么，不直接决定技术栈。
+4. 对每个高成本组件写清 **消费者 / 触发信号 / 退出或降级条件**；见 references/component-triggers.md。
+5. 分开记录本地检查、CI、部署和真实环境验收；一层通过不能替代另一层。
+6. 版本收尾时复核定位卡、组件清单和数据恢复路径；删除没有消费者的组件。
+7. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
 
 ## 硬边界
 
@@ -42,5 +43,6 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 ## 参考
 
 - 定位卡与四维判据：references/project-profile.md
+- 各状态最低基线：references/project-baseline.md
 - 组件触发与退出条件：references/component-triggers.md
 - 组合校准案例：references/portfolio-examples.md
