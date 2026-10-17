@@ -58,7 +58,7 @@ AI 辅助开发很容易把“更多组件、更多测试、更多文档”当�
 - 项目索引：[portfolio.md](portfolio.md)。
 - 当前没有运行时、数据库、队列、构建或 CI；这是按交付形态裁剪的结果，不是缺失。
 - 已配置双远端：origin 为 Forgejo canonical，mirror 为 GitHub push-only；main 跟踪 origin/main。
-- 安装为 Codex skill 尚未完成。
+- 已安装到 ~/.codex/skills/project-engineering-standards；这是静态副本，规则更新后需要重新同步。
 
 ## 维护
 
@@ -66,6 +66,7 @@ AI 辅助开发很容易把“更多组件、更多测试、更多文档”当�
 - 拉取默认走 origin（Forgejo）；mirror 只用于推送/备份，不作为 upstream。
 - 推送使用显式双远端：先 git push origin main，再 git push mirror main；两端用 git ls-remote 核对同一 SHA。
 - 注意：单独的 git push 只会推 origin，不会自动推 mirror；不要把它当成双远端完成。
+- 安装副本不会随仓库自动更新；修改 SKILL.md 或 references 后重新复制并校验 frontmatter/引用。
 - 修改规则时同步检查 SKILL.md、相关 reference 和 README 的入口，避免同一事实多处漂移。
 - 新增文档前先搜索现有文档；优先更新、合并或链接。
 - 不把临时分析、任务总结或一次性报告放进仓库。
