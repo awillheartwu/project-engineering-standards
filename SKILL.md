@@ -1,66 +1,40 @@
 ---
 name: project-engineering-standards
-description: "Profile a project's responsibility, runtime, data, and collaboration before setting its engineering baseline, then add databases, queues, services, CI, deployment, tests, or compatibility only when a real trigger exists. Use for new project setup, stack or architecture decisions, project reviews, and version-finish planning."
+description: "Choose a project's engineering baseline by responsibility, runtime, data, and collaboration, then apply explicit triggers for databases, queues, services, CI, deployment, tests, documentation, security, and compatibility. Use for new projects, existing-project audits, daily development, version finish, and production operations."
 metadata:
-  short-description: "Set project engineering by risk and real triggers"
+  short-description: "Project engineering by risk and real triggers"
 ---
 
 # Project Engineering Standards
 
-这套规范是一个决策工具，不是成熟度评级。核心判断：**责任与基础设施是两条独立轴**。外部用户、24 小时运行或数据重要，都不能单独证明需要 Postgres、Redis、队列或服务拆分。
+这套规范按项目风险选择工程基线，不是成熟度评级。核心判断：**责任与基础设施是两条独立轴**；外部用户、常驻运行或数据重要，不自动推出 Postgres、Redis、队列或服务拆分。
 
-## 先确认
+## 按场景选择
 
-在讨论技术栈之前，先填写 references/project-profile.md 的定位卡。至少确认：
+| 场景 | 先读 | 产出 |
+| --- | --- | --- |
+| **新项目** | [定位卡](references/project-profile.md)、[状态基线](references/project-baseline.md)、[生命周期](references/lifecycle.md)、[组件触发器](references/component-triggers.md) | 定位卡、最低基线、组件清单 |
+| **存量项目审计** | [落地与审计](references/adoption.md)、[组合案例](references/portfolio-examples.md) | 当前状态、错配、例外、下一动作 |
+| **日常改动** | [日常开发](references/daily-development.md)、[规模升降级](references/scaling.md)、[测试](references/testing.md)、[文档](references/documentation.md) | 局部改动、相关检查、证据 |
+| **版本收尾** | [收尾流程](references/version-finish.md)、[测试](references/testing.md)、[文档](references/documentation.md)、[性能与 CI](references/performance-and-ci.md) | 清理、验收、合 main、交付 |
+| **运行与事故** | [安全与恢复](references/operations.md)、[性能与 CI](references/performance-and-ci.md) | 安全、备份、恢复、告警 |
+| **判定校准** | [组合案例](references/portfolio-examples.md) | 对照案例，不照抄 |
 
-1. **项目状态**：scaffold、prototype、active、frozen。
-2. **责任面**：失败会造成什么后果。
-3. **运行面**：单次、单机常驻、多实例。
-4. **数据面**：可重建、需备份、强一致多写。
-5. **协作面**：个人、小团队、公开协作。
+## 核心规则
 
-scaffold 只定义目标、数据边界和下一次验证；不要先建数据库、队列、CI 或发布流水线。frozen 只保留运行、备份和恢复路径。
+1. 先确认状态（scaffold / prototype / active / frozen）和四维（责任 / 运行 / 数据 / 协作），不先选技术栈。
+2. 默认最小：一个仓库、一个可运行进程、SQLite 或本地文件；只有真实消费者才加数据库、队列、服务拆分或 CI。
+3. 高成本组件写清 **消费者 / 触发 / 退出条件**；没有消费者就删除或冻结。
+4. 测试是风险控制：日常不新增测试、不跑全量套件；收尾集中整理，只有数据、安全或高危 bug 做最小例外。
+5. build 和 CI 按交付需要存在：有产物才构建，有共享或部署才上 CI；构建一次并复用产物。
+6. 文档先搜索再新建，每份有读者和生命周期；清理文档、测试、空文件、空函数和孤儿代码是收尾的独立阶段。
+7. 人工验收通过后再合 main；main 自动部署时，合 main 即部署，必须先授权。
+8. 数据越不可恢复，备份与恢复越重要；D1/D2 必须有可执行的恢复路径。
+9. 保留用户改动；修改、提交、推送、部署、发布分别授权；不为了规范重写已经工作的项目。
+10. 性能与安全按需升级：长线运营先建性能预算；公网或分发项目做基本安全和恢复，不搞企业级体系。
 
-## 决策流程
+## 何时停
 
-1. 写定位卡，不先选工具。
-2. 从最小基线开始：一个仓库、一个可部署进程、SQLite 或本地文件、一条 CI；只有真实消费者才升级。
-3. 按项目状态选择最低基线；见 references/project-baseline.md。状态只决定必须做什么，不直接决定技术栈。
-4. 按交付形态选择分支模型；见 references/lifecycle.md。部署、分发和数据关键不是同一件事。
-5. 对每个高成本组件写清 **消费者 / 触发信号 / 退出或降级条件**；见 references/component-triggers.md。
-6. 测试是风险控制，不是默认交付物；日常不新增测试、不跑全量套件，按 references/testing.md 处理复现和收尾。
-7. 日常改动按 references/daily-development.md；代码、协作、运行、数据、交付或依赖规模变化时，按 references/scaling.md 升级或降级。
-8. 新增文档前先搜索现有文档，优先更新或合并；文档必须有读者和生命周期，见 references/documentation.md。
-9. 长线服务/应用在进入长期运营前定义性能预算；CI 一次构建、复用产物，见 references/performance-and-ci.md。
-10. 运行中的项目按 references/operations.md 处理安全、备份、事故和监控。
-11. 新项目入场或存量项目审计按 references/adoption.md；定位卡和例外要落到项目与索引。
-12. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
-13. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
-14. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
-15. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
-
-## 硬边界
-
-- 数据越不可恢复，备份、迁移前检查和恢复验证越重要；这与数据库品牌无关。
-- 不为假想的旧客户端、旧数据或旧版本增加兼容层；只兼容真实存在的对象。
-- 不把“外部用户”“常驻服务”“数据重要”直接等同于重型基础设施。
-- 修改、提交、推送、部署、发布分别按用户授权执行；规范本身不授予这些动作。
-- 保留用户已有改动；不要为了让规范整齐而重写已经工作的项目。
-- 项目仍是脚手架或已冷冻时，不套用完整流程。
-- build 与 CI 按交付需要存在；没有构建产物或共享部署时，不强迫补一层不存在的流程。
-
-## 参考
-
-- 定位卡与四维判据：references/project-profile.md
-- 各状态最低基线：references/project-baseline.md
-- 生命周期、分支与交付边界：references/lifecycle.md
-- 日常开发规范：references/daily-development.md
-- 规模升级与降级：references/scaling.md
-- 文档规范与预算：references/documentation.md
-- 性能与 CI/打包：references/performance-and-ci.md
-- 运行、安全与恢复：references/operations.md
-- 项目落地与存量审计：references/adoption.md
-- 测试策略与预算：references/testing.md
-- 版本收尾与交付检查：references/version-finish.md
-- 组件触发与退出条件：references/component-triggers.md
-- 组合校准案例：references/portfolio-examples.md
+- 脚手架或冷冻项目不套完整流程。
+- 没有真实消费者、没有预算或没有交付，不提前引入重型组件。
+- 事实不足时先只读审计，不直接重构。
