@@ -32,10 +32,12 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 7. 日常改动按 references/daily-development.md；代码、协作、运行、数据、交付或依赖规模变化时，按 references/scaling.md 升级或降级。
 8. 新增文档前先搜索现有文档，优先更新或合并；文档必须有读者和生命周期，见 references/documentation.md。
 9. 长线服务/应用在进入长期运营前定义性能预算；CI 一次构建、复用产物，见 references/performance-and-ci.md。
-10. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
-11. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
-12. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
-13. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
+10. 运行中的项目按 references/operations.md 处理安全、备份、事故和监控。
+11. 新项目入场或存量项目审计按 references/adoption.md；定位卡和例外要落到项目与索引。
+12. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
+13. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
+14. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
+15. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
 
 ## 硬边界
 
@@ -56,6 +58,8 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 - 规模升级与降级：references/scaling.md
 - 文档规范与预算：references/documentation.md
 - 性能与 CI/打包：references/performance-and-ci.md
+- 运行、安全与恢复：references/operations.md
+- 项目落地与存量审计：references/adoption.md
 - 测试策略与预算：references/testing.md
 - 版本收尾与交付检查：references/version-finish.md
 - 组件触发与退出条件：references/component-triggers.md
