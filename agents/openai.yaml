@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Engineering Standards"
+  short_description: "Set project engineering by risk and real triggers"
+  default_prompt: "Use $project-engineering-standards to profile this project before choosing its stack."
