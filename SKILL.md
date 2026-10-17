@@ -31,10 +31,11 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 6. 测试是风险控制，不是默认交付物；日常不新增测试、不跑全量套件，按 references/testing.md 处理复现和收尾。
 7. 日常改动按 references/daily-development.md；代码、协作、运行、数据、交付或依赖规模变化时，按 references/scaling.md 升级或降级。
 8. 新增文档前先搜索现有文档，优先更新或合并；文档必须有读者和生命周期，见 references/documentation.md。
-9. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
-10. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
-11. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
-12. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
+9. 长线服务/应用在进入长期运营前定义性能预算；CI 一次构建、复用产物，见 references/performance-and-ci.md。
+10. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
+11. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
+12. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
+13. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
 
 ## 硬边界
 
@@ -44,6 +45,7 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 - 修改、提交、推送、部署、发布分别按用户授权执行；规范本身不授予这些动作。
 - 保留用户已有改动；不要为了让规范整齐而重写已经工作的项目。
 - 项目仍是脚手架或已冷冻时，不套用完整流程。
+- build 与 CI 按交付需要存在；没有构建产物或共享部署时，不强迫补一层不存在的流程。
 
 ## 参考
 
@@ -53,6 +55,7 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 - 日常开发规范：references/daily-development.md
 - 规模升级与降级：references/scaling.md
 - 文档规范与预算：references/documentation.md
+- 性能与 CI/打包：references/performance-and-ci.md
 - 测试策略与预算：references/testing.md
 - 版本收尾与交付检查：references/version-finish.md
 - 组件触发与退出条件：references/component-triggers.md
