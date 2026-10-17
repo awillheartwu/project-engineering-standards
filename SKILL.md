@@ -28,10 +28,11 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 3. 按项目状态选择最低基线；见 references/project-baseline.md。状态只决定必须做什么，不直接决定技术栈。
 4. 按交付形态选择分支模型；见 references/lifecycle.md。部署、分发和数据关键不是同一件事。
 5. 对每个高成本组件写清 **消费者 / 触发信号 / 退出或降级条件**；见 references/component-triggers.md。
-6. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
-7. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
-8. 版本收尾时复核定位卡、组件清单和数据恢复路径；删除没有消费者的组件。
-9. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
+6. 测试是风险控制，不是默认交付物；日常不新增测试、不跑全量套件，按 references/testing.md 处理复现和收尾。
+7. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
+8. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
+9. 版本收尾时复核定位卡、组件清单和数据恢复路径；删除没有消费者的组件。
+10. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
 
 ## 硬边界
 
@@ -47,6 +48,7 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 - 定位卡与四维判据：references/project-profile.md
 - 各状态最低基线：references/project-baseline.md
 - 生命周期、分支与交付边界：references/lifecycle.md
+- 测试策略与预算：references/testing.md
 - 版本收尾与交付检查：references/version-finish.md
 - 组件触发与退出条件：references/component-triggers.md
 - 组合校准案例：references/portfolio-examples.md
