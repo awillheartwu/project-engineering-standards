@@ -30,10 +30,11 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 5. 对每个高成本组件写清 **消费者 / 触发信号 / 退出或降级条件**；见 references/component-triggers.md。
 6. 测试是风险控制，不是默认交付物；日常不新增测试、不跑全量套件，按 references/testing.md 处理复现和收尾。
 7. 日常改动按 references/daily-development.md；代码、协作、运行、数据、交付或依赖规模变化时，按 references/scaling.md 升级或降级。
-8. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
-9. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
-10. 版本收尾时复核定位卡、组件清单和数据恢复路径；删除没有消费者的组件。
-11. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
+8. 新增文档前先搜索现有文档，优先更新或合并；文档必须有读者和生命周期，见 references/documentation.md。
+9. 交付前按 references/version-finish.md 执行版本收尾；版本收尾本身不授权发布。
+10. 分开记录本地检查、CI、部署、分发和真实环境验收；一层通过不能替代另一层。
+11. 版本收尾时复核定位卡、组件清单、文档和数据恢复路径；删除没有消费者的内容。
+12. 需要校准判定时，读 references/portfolio-examples.md，不要把案例当成必须复制的模板。
 
 ## 硬边界
 
@@ -51,6 +52,7 @@ scaffold 只定义目标、数据边界和下一次验证；不要先建数据�
 - 生命周期、分支与交付边界：references/lifecycle.md
 - 日常开发规范：references/daily-development.md
 - 规模升级与降级：references/scaling.md
+- 文档规范与预算：references/documentation.md
 - 测试策略与预算：references/testing.md
 - 版本收尾与交付检查：references/version-finish.md
 - 组件触发与退出条件：references/component-triggers.md
