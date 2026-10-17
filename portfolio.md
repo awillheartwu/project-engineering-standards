@@ -4,4 +4,4 @@
 
 | 项目 | 状态 | 定位卡 | 交付形态 | 例外 | 下一次复核 |
 | --- | --- | --- | --- | --- | --- |
-| project-engineering-standards | active | [PROJECT_PROFILE.md](PROJECT_PROFILE.md) | 本地 skill / 文档 | 无 | 加入 NAS 备份、安装为 skill 或首次落地到其他项目时 |
+| project-engineering-standards | active | [PROJECT_PROFILE.md](PROJECT_PROFILE.md) | 本地 skill / 文档 | 无 | 安装为 skill、首次落地到其他项目或规则结构调整时 |

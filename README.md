@@ -57,11 +57,13 @@ AI 辅助开发很容易把“更多组件、更多测试、更多文档”当�
 - 本仓库定位卡：[PROJECT_PROFILE.md](PROJECT_PROFILE.md)。
 - 项目索引：[portfolio.md](portfolio.md)。
 - 当前没有运行时、数据库、队列、构建或 CI；这是按交付形态裁剪的结果，不是缺失。
-- 当前只有本地 Git 历史，尚无远端或 NAS 备份；安装为 Codex skill 也尚未完成。
+- 已配置双远端：origin 为 Forgejo canonical，mirror 为 GitHub；main 跟踪 origin/main。
+- 安装为 Codex skill 尚未完成。
 
 ## 维护
 
 - 只有 main 分支；变更按 Conventional Commits 提交。
+- 推送使用显式双远端：先 git push origin main，再 git push mirror main；两端用 git ls-remote 核对同一 SHA。
 - 修改规则时同步检查 SKILL.md、相关 reference 和 README 的入口，避免同一事实多处漂移。
 - 新增文档前先搜索现有文档；优先更新、合并或链接。
 - 不把临时分析、任务总结或一次性报告放进仓库。
