@@ -38,6 +38,7 @@ AI 辅助开发很容易把“更多组件、更多测试、更多文档”当�
 | 日常改动 | [日常开发](references/daily-development.md)、[规模升降级](references/scaling.md) |
 | 测试与文档 | [测试策略](references/testing.md)、[文档规范](references/documentation.md) |
 | 版本收尾 | [收尾流程](references/version-finish.md)、[性能与 CI](references/performance-and-ci.md) |
+| 提交、推送与分发前 | [隐私检查](references/operations.md#提交与推送前的隐私检查) |
 | 运行与事故 | [安全与恢复](references/operations.md) |
 
 ## 参考地图
@@ -66,6 +67,7 @@ AI 辅助开发很容易把“更多组件、更多测试、更多文档”当�
 - 拉取默认走 origin（Forgejo）；mirror 只用于推送/备份，不作为 upstream。
 - 推送使用显式双远端：先 git push origin main，再 git push mirror main；两端用 git ls-remote 核对同一 SHA。
 - 注意：单独的 git push 只会推 origin，不会自动推 mirror；不要把它当成双远端完成。
+- 提交或推送前执行[隐私检查](references/operations.md#提交与推送前的隐私检查)；敏感信息进入过历史时，必须清除受污染历史并复查后再推送，不能只删当前文件。
 - 安装副本不会随仓库自动更新；修改 SKILL.md 或 references 后重新复制并校验 frontmatter/引用。
 - 修改规则时同步检查 SKILL.md、相关 reference 和 README 的入口，避免同一事实多处漂移。
 - 新增文档前先搜索现有文档；优先更新、合并或链接。
